@@ -22,7 +22,21 @@ void generateBillBody(char item[30],int qty, float price){
         printf("%d\t\t",qty);
         printf("%.2f\t\t", qty * price);
         printf("\n");
-}
+};
+
+struct items{
+    char item[20];
+    float price;
+    int qty; 
+};
+
+struct orders{
+    char customer[50];
+    char date[50];
+    int numOfItems;
+    struct items itm[50];
+};
+
 void generatedBillFooter(float total){
     printf("\n");
     float dis = 0.1*total;
@@ -40,13 +54,44 @@ void generatedBillFooter(float total){
     printf("\n-----------------------------\n");
 }
  int main(){
-    return 0;
-
+    
+    int opt;
+    struct orders ord;
     /*This is my dashboard*/
     printf("\t=========TEEMAH RESTAURANT======");
     printf("\n1.Generate Invoice");
     printf("\n2.Show all invoices");
     printf("\n3.Search Invoice");
     printf("\n4.Exit");
+
+    printf("\n\nSelect the operation you wish to carry out ");
+    scanf("%d", &opt);
+    fgetc(stdin);
+    switch(opt){
+        case 1:
+        printf("\nPlease, enter the name of the customer");
+        fgets(ord.customer,50,stdin);
+        ord.customer[strlen(ord.customer)-1] = 0;
+        strcpy(ord.date,_DATE_);
+        printf("\nPlease enter the number of items:\t  ");
+        scanf("%d",&n);
+
+        for(int i=0;i<n;i++)
+            fgetc(stdin);
+            printf("\n\n");
+            printf("Please enter the item %d",i+1);
+            fgets(ord.itm[1].item,20,stdin);
+            ord.itm[i].item[strlen(ord.itm[1].item)-1]=0;
+            printf("\nPlease enter the quantity:\t");
+            scanf("%d",ord.itm[1].qty);
+            printf("\nPlease enter the unit price:\t");
+            scanf("\f",&ord.itm[i].price);
+    }
+    
+
+
+
+    printf("\n\n");
+
+    return 0;
  }
- 
